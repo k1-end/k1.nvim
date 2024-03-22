@@ -51,6 +51,6 @@ end
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'intelephense', 'tsserver', 'sqlls', 'lua_ls', 'ltex'},
+  ensure_installed = {'intelephense', 'tsserver', 'sqlls', 'lua_ls', 'ltex', 'pylsp'},
   handlers = {default_setup},
 })

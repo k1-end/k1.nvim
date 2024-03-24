@@ -52,5 +52,20 @@ end
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {'intelephense', 'tsserver', 'sqlls', 'lua_ls', 'ltex', 'pylsp'},
-  handlers = {default_setup},
+  handlers = {
+        default_setup,
+        ["pylsp"] = function ()
+            lspconfig.pylsp.setup {
+                settings = {
+                    pylsp = {
+                        plugins = {
+                            rope_autoimport = {
+                                enabled = true
+                            }
+                        }
+                    }
+                }
+            }
+        end
+    },
 })

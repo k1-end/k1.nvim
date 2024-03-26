@@ -15,6 +15,13 @@ vim.cmd("autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>")
 vim.o.ignorecase = true
 vim.o.wrap = true
 vim.o.linebreak = true
+vim.opt.showmode = false
+vim.opt.breakindent = true
+vim.opt.signcolumn = 'yes'
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.inccommand = 'split'
+
 
 -- vim.cmd("set clipboard=unnamedplus") set clipboard to synct
 

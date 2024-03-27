@@ -12,15 +12,18 @@ vim.cmd("set foldmethod=indent")
 vim.cmd("colorscheme tokyonight")
 vim.cmd("autocmd BufRead * normal zR")
 vim.cmd("autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>")
-vim.o.ignorecase = true
-vim.o.wrap = true
-vim.o.linebreak = true
-vim.opt.showmode = false
+
+vim.o.ignorecase    = true
+vim.o.wrap          = true
+vim.o.linebreak     = true
+vim.o.arabicshape   = false
+vim.opt.showmode    = false
 vim.opt.breakindent = true
-vim.opt.signcolumn = 'yes'
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-vim.opt.inccommand = 'split'
+vim.opt.signcolumn  = 'yes'
+vim.opt.splitright  = true
+vim.opt.splitbelow  = true
+vim.opt.inccommand  = 'split'
+
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',

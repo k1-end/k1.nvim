@@ -11,6 +11,9 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- moving lines
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- moving lines
 
+vim.keymap.set("n", "gp", ":G push<CR>")
+vim.keymap.set("n", "gl", ":G pull<CR>")
+
 vim.keymap.set("n", "J", "mzJ`z")            -- joining lines
 vim.keymap.set('n', '<leader>fg', ':G<CR>:Neotree close<CR><C-w><C-o>')
 vim.keymap.set('i', '<C-e>', '<C-o>$')       -- go to the end of the line in insert mode

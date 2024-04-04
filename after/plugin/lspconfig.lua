@@ -51,7 +51,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
         map('gs', vim.lsp.buf.signature_help, '[G]oto [S]ignature help')
-        map('of', vim.diagnostic.open_float, '[O]pen [F]loat')
+        map('<leader>of', vim.diagnostic.open_float, '[O]pen [F]loat')
         map('[d', vim.diagnostic.goto_prev, 'Previous Diagnostic')
         map(']d', vim.diagnostic.goto_next, 'Next Diagnostic')
         vim.keymap.set({ 'n', 'x' }, '<M-F>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', { buffer = event.buf ,desc = 'LSP: [F]ormat Buffer'})

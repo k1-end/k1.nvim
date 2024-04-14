@@ -111,7 +111,7 @@ require('mason-lspconfig').setup({
                                 enabled = true
                             },
                             pycodestyle = {
-                                maxLineLength = 110
+                                maxLineLength = 120
                             }
                         }
                     }

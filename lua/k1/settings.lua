@@ -13,6 +13,7 @@ vim.cmd("autocmd BufWinEnter *.php setlocal foldmethod=indent")
 vim.cmd("autocmd BufWinEnter *.php setlocal foldlevel=4")
 vim.cmd("autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>")
 vim.cmd("packadd cfilter")
+vim.g.copilot_proxy="https://172.16.51.117:1081"
 
 vim.o.ignorecase    = true
 vim.o.wrap          = true

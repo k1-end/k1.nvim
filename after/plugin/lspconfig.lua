@@ -109,6 +109,9 @@ require('mason-lspconfig').setup({
                         plugins = {
                             rope_autoimport = {
                                 enabled = true
+                            },
+                            pycodestyle = {
+                                maxLineLength = 110
                             }
                         }
                     }

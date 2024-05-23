@@ -26,6 +26,7 @@ local function toggle_telescope(harpoon_files)
     }):find()
 end
 
-vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end, { desc = "Open harpoon window" })
+-- vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end, { desc = "Open harpoon window" })
+vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 vim.api.nvim_command('command -nargs=1 Hprmat lua require("harpoon"):list():removeAt(<args>)')
 vim.api.nvim_command('command Hprm lua require("harpoon"):list():remove()')

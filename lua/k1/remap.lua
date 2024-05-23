@@ -19,3 +19,4 @@ vim.keymap.set("n", "J", "mzJ`z")            -- joining lines
 vim.keymap.set('n', '<leader>fg', ':G<CR>:Neotree close<CR><C-w><C-o>')
 vim.keymap.set('i', '<C-e>', '<C-o>$')       -- go to the end of the line in insert mode
 vim.keymap.set("n", "<leader>o", ":Neotree toggle<CR>")
+vim.keymap.set("n", "<leader>ot", ":Neotree reveal_force_cwd<CR>")

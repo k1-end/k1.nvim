@@ -99,7 +99,7 @@ end
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { 'intelephense', 'tsserver', 'sqlls', 'lua_ls', 'ltex', 'pylsp' },
+    ensure_installed = { 'intelephense', 'tsserver', 'sqlls', 'lua_ls', 'ltex', 'pylsp', 'phpactor'},
     handlers = {
         default_setup,
         ["pylsp"] = function()
@@ -120,8 +120,24 @@ require('mason-lspconfig').setup({
         end,
         ['lua_ls'] = function()
             lspconfig.lua_ls.setup {
-                settings = { Lua = { diagnostics = { globals = { 'vim' } } } },
+                settings = {
+                    Lua = {
+                        diagnostics = { globals = { 'vim' } },
+                        hint = {enabled = true}
+                    }
+                },
+            }
+        end,
+        ['phpactor'] = function()
+            lspconfig.phpactor.setup {
+                init_options = {
+                    ["language_server.diagnostic_providers"] = {},
+                    ["language_server_worse_reflection.diagnostics.enable"] = false,
+                    ["language_server_worse_reflection.inlay_hints.enable"] = true,
+                    ["language_server_worse_reflection.inlay_hints.types"] = false,
+                }
             }
         end
+
     },
 })

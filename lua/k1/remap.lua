@@ -4,9 +4,10 @@ vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', { noremap = true, silent = true 
 
 vim.keymap.set("n", "<leader>nrw", vim.cmd.Ex) -- netrw
 vim.keymap.set({"v", "n"}, "<leader>ys", "\"+y") -- yank to system clipboard
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
 
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- moving lines

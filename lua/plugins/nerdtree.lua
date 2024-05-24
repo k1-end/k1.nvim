@@ -1,4 +1,4 @@
 return {
-    'preservim/nerdtree',
-    dependencies = { 'nvim-tree/nvim-web-devicons' }
+    -- 'preservim/nerdtree',
+    -- dependencies = { 'nvim-tree/nvim-web-devicons' }
 }

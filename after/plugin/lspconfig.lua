@@ -56,6 +56,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         map(']d', vim.diagnostic.goto_next, 'Next Diagnostic')
         vim.keymap.set({ 'n', 'x' }, '<M-F>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', { buffer = event.buf ,desc = 'LSP: [F]ormat Buffer'})
 
+        map('<leader>ih', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end, '[I]nlay [H]int')
 
         -- vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
         -- vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)

@@ -11,6 +11,8 @@ vim.opt.smartindent = true
 vim.cmd("colorscheme tokyodark")
 vim.cmd("autocmd BufWinEnter *.php setlocal foldmethod=indent")
 vim.cmd("autocmd BufWinEnter *.php setlocal foldlevel=40")
+vim.cmd("autocmd BufWinEnter *.dbout setlocal foldmethod=manual")
+vim.cmd("autocmd BufWinEnter *.dbout setlocal foldlevel=40")
 vim.cmd("autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>")
 vim.cmd("packadd cfilter")
 

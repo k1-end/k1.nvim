@@ -50,5 +50,8 @@ require("formatter").setup({
 		json = {
 			require("formatter.filetypes.json").jq,
 		},
+		php = {
+			require("formatter.filetypes.php").pint,
+		},
 	},
 })

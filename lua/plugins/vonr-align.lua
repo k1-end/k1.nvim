@@ -3,7 +3,7 @@ return {
     branch = "v2",
     lazy = true,
     init = function()
-        local NS = { noremap = true, silent = true }
+        local NS = { noremap = true, silent = true, desc = "ali[G]n"}
 
         -- Aligns to 1 character
         vim.keymap.set(

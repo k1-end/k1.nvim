@@ -100,7 +100,7 @@ end
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { 'intelephense', 'tsserver', 'sqlls', 'lua_ls', 'ltex', 'pylsp', 'phpactor'},
+    ensure_installed = { 'intelephense', 'tsserver', 'sqlls', 'lua_ls', 'ltex', 'pylsp', 'phpactor', 'html'},
     handlers = {
         default_setup,
         ["pylsp"] = function()
@@ -136,7 +136,13 @@ require('mason-lspconfig').setup({
                     ["language_server_worse_reflection.diagnostics.enable"] = false,
                     ["language_server_worse_reflection.inlay_hints.enable"] = true,
                     ["language_server_worse_reflection.inlay_hints.types"] = false,
-                }
+                },
+            }
+        end,
+        ['html'] = function()
+            lspconfig.html.setup {
+                filetypes = {'html', 'blade'},
+                capabilities = lsp_capabilities,
             }
         end
 

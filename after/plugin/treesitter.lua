@@ -7,6 +7,8 @@ parser_config.blade = {
 	},
 	filetype = "blade",
 }
-parser_config.html = {
-    filetype = { "php", "blade"}
-}
+vim.cmd([[
+augroup BladeFiltypeRelated
+au BufNewFile,BufRead *.blade.php set ft=blade
+augroup END
+]])

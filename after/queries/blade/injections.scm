@@ -14,3 +14,5 @@
     (#set! injection.language php_only))
 ((parameter) @injection.content
     (#set! injection.language php_only))
+
+(text) @html

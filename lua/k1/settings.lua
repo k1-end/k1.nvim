@@ -27,6 +27,7 @@ vim.opt.splitright  = true
 vim.opt.splitbelow  = true
 vim.opt.inccommand  = 'split'
 vim.opt.conceallevel  = 2
+vim.notify = require("notify")
 
 
 vim.api.nvim_create_autocmd('TextYankPost', {

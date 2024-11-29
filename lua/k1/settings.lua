@@ -42,5 +42,7 @@ vim.cmd("highlight Normal guibg=none")
 vim.cmd("highlight NonText guibg=none")
 vim.cmd("highlight Normal ctermbg=none")
 vim.cmd("highlight NonText ctermbg=none")
+
+vim.api.nvim_set_hl(0, 'Beacon', { bg = 'white' })
 -- vim.cmd("set clipboard=unnamedplus") set clipboard to synct
 

@@ -8,3 +8,4 @@ vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iag
 vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
 vim.keymap.set('n', '<leader>tr', builtin.resume, { desc = '[S]earch [K]eymaps' })
+vim.keymap.set('x', '<leader>ss', '"zy<Cmd>Telescope live_grep<CR><C-r>z', {desc = '[S]earch [S]elecetd text'} )

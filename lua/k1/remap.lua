@@ -22,3 +22,6 @@ vim.keymap.set('i', '<C-e>', '<C-o>$')       -- go to the end of the line in ins
 vim.keymap.set("n", "<leader>o", ":Neotree toggle<CR>")
 vim.keymap.set("n", "<leader>ot", ":Neotree reveal_force_cwd<CR>")
 vim.keymap.set("x", "<leader>p", [["_dP]])
+
+vim.keymap.set("n", "<M-j>", ":cnext<CR>")
+vim.keymap.set("n", "<M-k>", ":cprevious<CR>")

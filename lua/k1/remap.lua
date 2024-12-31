@@ -25,3 +25,7 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 
 vim.keymap.set("n", "<M-j>", ":cnext<CR>")
 vim.keymap.set("n", "<M-k>", ":cprevious<CR>")
+
+
+vim.keymap.set("n", "<leader>ft", ":FloatermToggle<CR>")
+vim.keymap.set("t", "<leader>ft", "<C-\\><C-n>:FloatermToggle<CR>")

@@ -29,3 +29,16 @@ vim.keymap.set("n", "<M-k>", ":cprevious<CR>")
 
 vim.keymap.set("n", "<leader>ft", ":FloatermToggle<CR>")
 vim.keymap.set("t", "<leader>ft", "<C-\\><C-n>:FloatermToggle<CR>")
+
+vim.api.nvim_create_user_command('OilHere', function()
+    local buf_path = vim.fn.fnamemodify(vim.fn.expand("%"), ":p:h")
+    local file_name = vim.fn.expand("%:t")
+    vim.cmd("Oil " .. buf_path)
+    -- vim.api.nvim_command("/" .. file_name) -- Perform the search
+     -- Delay the search slightly to allow Oil to open
+    vim.defer_fn(function()
+        vim.api.nvim_command("nohlsearch") 
+        vim.api.nvim_command("set hlsearch") 
+        vim.api.nvim_command("/\\v" .. file_name) 
+    end, 100)
+end, {})

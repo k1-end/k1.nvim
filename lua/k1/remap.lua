@@ -42,3 +42,7 @@ vim.api.nvim_create_user_command('OilHere', function()
         vim.api.nvim_command("/\\v" .. file_name) 
     end, 100)
 end, {})
+
+vim.api.nvim_create_user_command('YankFileName', function()
+      vim.cmd('let @" = expand("%:t")')
+end, {})

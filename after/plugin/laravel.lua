@@ -4,6 +4,11 @@ function GTV()
     vim.api.nvim_command('edit ./resources/views/' .. view .. '.blade.php')
 end
 
+
+vim.api.nvim_create_user_command('GoToView', function()
+    GTV()
+end, {})
+
 function GTR()
     local line = vim.fn.getline(".")
     local route = line:match("'(.-)'")
@@ -42,3 +47,8 @@ function GTR()
         )
     end
 end
+
+
+vim.api.nvim_create_user_command('GoToRoute', function()
+    GTR()
+end, {})

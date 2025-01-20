@@ -53,5 +53,8 @@ require("formatter").setup({
 		php = {
 			require("formatter.filetypes.php").pint,
 		},
+        sql = {
+            require("formatter.filetypes.sql").sql_formatter,
+        },
 	},
 })

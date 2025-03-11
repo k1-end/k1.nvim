@@ -46,3 +46,9 @@ end, {})
 vim.api.nvim_create_user_command('YankFileName', function()
       vim.cmd('let @" = expand("%:t")')
 end, {})
+
+
+
+vim.api.nvim_create_user_command('Glol', function()
+    vim.cmd('Git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset"')
+end, {})

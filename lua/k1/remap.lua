@@ -5,8 +5,8 @@ vim.api.nvim_set_keymap('n', '<C-s>', ':w<CR>', { noremap = true, silent = true 
 vim.keymap.set("n", "<leader>nrw", vim.cmd.Ex) -- netrw
 vim.keymap.set({"v", "n"}, "<leader>ys", "\"+y") -- yank to system clipboard
 
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- vim.keymap.set("n", "<C-d>", "<C-d>zz")
+-- vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
@@ -45,4 +45,10 @@ end, {})
 
 vim.api.nvim_create_user_command('YankFileName', function()
       vim.cmd('let @" = expand("%:t")')
+end, {})
+
+
+
+vim.api.nvim_create_user_command('Glol', function()
+    vim.cmd('Git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset"')
 end, {})

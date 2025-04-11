@@ -22,6 +22,7 @@ vim.keymap.set('i', '<C-e>', '<C-o>$')          -- go to the end of the line in 
 vim.keymap.set("n", "<leader>o", ":OilHere")
 vim.keymap.set("n", "<leader>ot", ":Neotree reveal_force_cwd<CR>")
 vim.keymap.set("x", "<leader>p", [["_dP]])
+vim.keymap.set("v", "<leader>y", [[mzy`z]])
 
 vim.keymap.set("n", "<M-j>", ":cnext<CR>")
 vim.keymap.set("n", "<M-k>", ":cprevious<CR>")

@@ -16,9 +16,9 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- moving lines
 vim.keymap.set("n", "<leader>gp", ":G push")
 vim.keymap.set("n", "<leader>gl", ":G pull")
 
-vim.keymap.set("n", "J", "mzJ`z")            -- joining lines
+vim.keymap.set("n", "J", "mzJ`z")          -- joining lines
 vim.keymap.set('n', '<leader>fg', ':G<CR>:Neotree close<CR><C-w><C-o>')
-vim.keymap.set('i', '<C-e>', '<C-o>$')       -- go to the end of the line in insert mode
+vim.keymap.set('i', '<C-e>', '<C-o>$')          -- go to the end of the line in insert mode
 vim.keymap.set("n", "<leader>o", ":OilHere")
 vim.keymap.set("n", "<leader>ot", ":Neotree reveal_force_cwd<CR>")
 vim.keymap.set("x", "<leader>p", [["_dP]])
@@ -31,20 +31,22 @@ vim.keymap.set("n", "<leader>ft", ":FloatermToggle<CR>")
 vim.keymap.set("t", "<leader>ft", "<C-\\><C-n>:FloatermToggle<CR>")
 
 vim.api.nvim_create_user_command('OilHere', function()
-    local buf_path = vim.fn.fnamemodify(vim.fn.expand("%"), ":p:h")
-    local file_name = vim.fn.expand("%:t")
-    vim.cmd("Oil " .. buf_path)
-    -- vim.api.nvim_command("/" .. file_name) -- Perform the search
-     -- Delay the search slightly to allow Oil to open
-    vim.defer_fn(function()
-        vim.api.nvim_command("nohlsearch") 
-        vim.api.nvim_command("set hlsearch") 
-        vim.api.nvim_command("/\\v" .. file_name) 
-    end, 100)
+  vim.cmd('highlight OilCurrentFile guibg=#999222 guifg=#000000')
+  require('oil').open()
+  vim.defer_fn(function()
+      vim.api.nvim_buf_add_highlight(
+        0,
+        -1,
+        'OilCurrentFile',
+        vim.fn.line('.') - 1,  -- lines are 0-indexed
+        2,               -- start column
+        -1               -- end column (-1 for end of line)
+      )
+  end, 200)  -- Increased delay to ensure Oil is fully rendered
 end, {})
 
 vim.api.nvim_create_user_command('YankFileName', function()
-      vim.cmd('let @" = expand("%:t")')
+    vim.cmd('let @" = expand("%:t")')
 end, {})
 
 

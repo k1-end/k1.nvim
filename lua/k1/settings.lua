@@ -40,10 +40,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-vim.cmd("highlight Normal guibg=none")
-vim.cmd("highlight NonText guibg=none")
-vim.cmd("highlight Normal ctermbg=none")
-vim.cmd("highlight NonText ctermbg=none")
+-- For transparent background
+-- vim.cmd("highlight Normal guibg=none")
+-- vim.cmd("highlight NonText guibg=none")
+-- vim.cmd("highlight Normal ctermbg=none")
+-- vim.cmd("highlight NonText ctermbg=none")
 
 vim.api.nvim_set_hl(0, 'Beacon', { bg = 'white' })
 if vim.fn.has('win32') == 1 then

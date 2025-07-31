@@ -8,7 +8,8 @@ vim.opt.expandtab = true -- replace tabs with spaces
 vim.o.updatetime = 100
 vim.opt.smartindent = true
 
-vim.cmd("colorscheme tokyodark")
+-- vim.cmd("colorscheme tokyonight")
+vim.cmd[[colorscheme tokyonight]]
 vim.cmd("autocmd BufWinEnter *.php setlocal foldmethod=indent")
 vim.cmd("autocmd BufWinEnter *.php setlocal foldlevel=4")
 vim.cmd("autocmd BufWinEnter *.go setlocal foldmethod=indent")

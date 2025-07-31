@@ -100,7 +100,17 @@ end
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = { 'intelephense', 'ts_ls', 'sqlls', 'lua_ls', 'ltex', 'pylsp', 'phpactor', 'html'},
+    ensure_installed = { 
+        'intelephense',
+        'ts_ls',
+        'sqlls',
+        'lua_ls',
+        -- 'ltex',
+        'pylsp',
+        'phpactor',
+        'html'
+    },
+    skip_setup = { "ltex" },
     handlers = {
         default_setup,
         ["pylsp"] = function()

@@ -30,6 +30,13 @@ vim.opt.splitright  = true
 vim.opt.splitbelow  = true
 vim.opt.inccommand  = 'split'
 vim.opt.conceallevel  = 2
+
+vim.opt.spell = true
+vim.opt.spelllang = 'en_us'
+vim.opt.spellfile = vim.fn.stdpath('config') .. '/spell/en.utf-8.add'
+
+
+
 -- views can only be fully collapsed with the global statusline
 vim.opt.laststatus = 3 -- Added this line for avante.nvim
 vim.notify = require("notify")

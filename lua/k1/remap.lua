@@ -52,6 +52,10 @@ vim.api.nvim_create_user_command('YankFileName', function()
     vim.cmd('let @" = expand("%:t")')
 end, {})
 
+vim.api.nvim_create_user_command('ClsNotif', function()
+    require("notify").dismiss()
+end, {})
+
 
 
 vim.api.nvim_create_user_command('Glol', function()

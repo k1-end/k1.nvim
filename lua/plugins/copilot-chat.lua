@@ -7,7 +7,7 @@ return {
     },
     build = "make tiktoken", -- Only on MacOS or Linux
     opts = {
-            -- proxy = "http://172.16.51.117:1081"
+            proxy = os.getenv('COPILOT_PROXY') 
     },
     -- See Commands section for default commands if you want to lazy load on them
   },

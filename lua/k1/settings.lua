@@ -9,8 +9,8 @@ vim.o.updatetime = 100
 vim.opt.smartindent = true
 
 vim.cmd("colorscheme rose-pine-moon")
-vim.cmd("autocmd BufWinEnter *.php setlocal foldmethod=indent")
-vim.cmd("autocmd BufWinEnter *.php setlocal foldlevel=4")
+vim.cmd("autocmd BufRead *.php setlocal foldmethod=indent")
+vim.cmd("autocmd BufRead *.php setlocal foldlevel=4")
 vim.cmd("autocmd BufWinEnter *.go setlocal foldmethod=indent")
 vim.cmd("autocmd BufWinEnter *.go setlocal foldlevel=4")
 vim.cmd("autocmd BufWinEnter *.dbout setlocal foldmethod=manual")

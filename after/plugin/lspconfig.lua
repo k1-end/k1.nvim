@@ -107,7 +107,7 @@ require('mason-lspconfig').setup({
         'lua_ls',
         -- 'ltex',
         'pylsp',
-        'phpactor',
+        -- 'phpactor',
         'html'
     },
     skip_setup = { "ltex" },

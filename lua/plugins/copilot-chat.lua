@@ -5,7 +5,7 @@ return {
       { "zbirenbaum/copilot.lua" }, -- or zbirenbaum/copilot.lua
       { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
     },
-    build = "make tiktoken", -- Only on MacOS or Linux
+    build = vim.fn.has('win32') == 1 and '' or 'make tiktoken',
     opts = {
             proxy = os.getenv('COPILOT_PROXY') 
     },

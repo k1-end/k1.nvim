@@ -12,15 +12,18 @@ return {
   -- },
   ---@module 'obsidian'
   ---@type obsidian.config
-  opts = {
-    legacy_commands = false, -- this will be removed in the next major release
-    workspaces = {
-      {
-        name = "personal",
-        path = "~/Documents/obsidian/personal",
+  opts = function()
+    return {
+      legacy_commands = false,
+      note_id_func = require("obsidian.builtin").title_id,
+      workspaces = {
+        {
+          name = "personal",
+          path = "~/Documents/obsidian/personal",
+        },
       },
-    },
-  },
+    }
+  end,
 }
 -- return {
 --   "epwalsh/obsidian.nvim",

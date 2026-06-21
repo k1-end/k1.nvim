@@ -13,3 +13,12 @@ toFloat64
 binlog
 SHA256
 json
+realpaybuy
+Paybuy
+batchPaymentProcessor/!
+map/!
+WEBSITE_URL/!
+product/!
+city/!
+output/!
+private/!

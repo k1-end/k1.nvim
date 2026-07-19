@@ -49,7 +49,10 @@ vim.api.nvim_create_user_command('OilHere', function()
 end, {})
 
 vim.api.nvim_create_user_command('YankFileName', function()
-    vim.cmd('let @" = expand("%:t")')
+    local name = vim.fn.expand('%:t')
+    vim.fn.setreg('"', name)
+    vim.fn.setreg('+', name)
+    vim.notify('Yanked file name: ' .. name)
 end, {})
 
 vim.api.nvim_create_user_command('ClsNotif', function()

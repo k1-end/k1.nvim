@@ -161,33 +161,33 @@ return {
     end,
   },
 
-  -- Treesitter
+  -- Treesitter (new rewrite API — requires Neovim 0.12+ and tree-sitter-cli)
   {
     'nvim-treesitter/nvim-treesitter',
+    lazy = false, -- upstream: "This plugin does not support lazy-loading."
     build = ':TSUpdate',
     config = function()
-      require('nvim-treesitter.configs').setup({
-        ensure_installed = { 'c', 'lua', 'vim', 'vimdoc', 'javascript', 'html', 'php', 'python', 'markdown', 'markdown_inline' },
-        sync_install = false,
-        highlight = { enable = true },
-        indent = { enable = true },
+      require('nvim-treesitter').setup({
+        install_dir = vim.fn.stdpath('data') .. '/site',
       })
 
-      -- Custom Blade parser
-      local parser_config = require('nvim-treesitter.parsers')
-      parser_config.blade = {
-        install_info = {
-          url = 'https://github.com/EmranMR/tree-sitter-blade',
-          files = { 'src/parser.c' },
-          branch = 'main',
-        },
-        filetype = 'blade',
+      -- Install parsers asynchronously (no-op if already installed).
+      -- Wrapped in pcall so nvim still loads if tree-sitter-cli is absent.
+      local ensure_installed = {
+        'c', 'lua', 'vim', 'vimdoc', 'javascript', 'html',
+        'php', 'python', 'markdown', 'markdown_inline',
       }
-      local grp = vim.api.nvim_create_augroup('BladeFiltypeRelated', { clear = true })
-      vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
-        group = grp,
-        pattern = '*.blade.php',
-        callback = function() vim.bo.filetype = 'blade' end,
+      pcall(function()
+        require('nvim-treesitter').install(ensure_installed)
+      end)
+
+      -- Enable highlight + indent for any filetype with a parser.
+      vim.api.nvim_create_autocmd('FileType', {
+        group = vim.api.nvim_create_augroup('k1_treesitter_ft', { clear = true }),
+        callback = function(args)
+          pcall(vim.treesitter.start, args.buf)
+          vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
       })
     end,
   },

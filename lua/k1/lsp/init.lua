@@ -1,6 +1,6 @@
--- Modern LSP setup: per-server configs (no mason-lspconfig handler pattern).
-
-local lspconfig = require('lspconfig')
+-- Modern LSP setup using native vim.lsp.config / vim.lsp.enable (Nvim 0.11+).
+-- Per-server overrides live in lua/k1/lsp/servers/<name>.lua and are merged
+-- on top of nvim-lspconfig's defaults shipped in lsp/<name>.lua.
 
 -- Capabilities (add cmp-nvim-lsp if available)
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -59,7 +59,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
--- Server registry: name -> config table (loaded from lua/k1/lsp/servers/<name>.lua)
+-- Server registry: name -> config table (loaded from lua/k1/lsp/servers/<name>.lua).
+-- Names without an override file just use nvim-lspconfig's defaults.
 local servers = {
   intelephense = {},
   ts_ls = {},
@@ -71,6 +72,8 @@ local servers = {
 }
 
 for name, config in pairs(servers) do
-  config.capabilities = vim.tbl_deep_extend('keep', config.capabilities or {}, capabilities)
-  lspconfig[name].setup(config)
+  config = vim.tbl_deep_extend('keep', config, { capabilities = capabilities })
+  vim.lsp.config(name, config)
 end
+
+vim.lsp.enable(vim.tbl_keys(servers))

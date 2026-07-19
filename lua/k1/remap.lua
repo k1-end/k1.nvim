@@ -67,3 +67,18 @@ vim.api.nvim_create_user_command('YankRelativePath', function()
   vim.fn.setreg('"', path)
   vim.notify('Yanked relative path: ' .. path)
 end, {})
+
+vim.api.nvim_create_user_command('YankPathLine', function()
+  local path = vim.fn.expand('%:.')
+  local line = vim.fn.line('.')
+  local text
+  if path == '' or path == '.' then
+    text = tostring(line)
+  else
+    text = path .. ':' .. line
+  end
+  vim.fn.setreg('+', text)
+  vim.notify('Yanked: ' .. text)
+end, {})
+
+vim.keymap.set('n', '<leader>yl', ':YankPathLine<CR>', { desc = 'Yank path:line to clipboard' })

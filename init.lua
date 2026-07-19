@@ -1,5 +1,7 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+-- Leaders must be set before lazy.nvim loads so plugin `keys = {}` mappings
+-- pick up the right leader.
+require('k1.g')
+
 vim.opt.termguicolors = true
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -14,7 +16,7 @@ if not vim.loop.fs_stat(lazypath) then
   }
 end
 vim.opt.rtp:prepend(lazypath)
-require("lazy").setup("plugins")
+
+require('lazy').setup('plugins')
 
 require('k1')
-

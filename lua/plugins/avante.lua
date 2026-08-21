@@ -4,27 +4,68 @@ return {
   lazy = false,
   version = false,
   opts = {
-    provider = "opencode",
-    auto_suggestions_provider = "opencode-go",
+    mode = "agentic", -- "agentic" or "legacy"
+    provider = "opencode-go",
+    auto_suggestions_provider = "opencode-suggest",
     providers = {
       ["opencode-go"] = {
         __inherited_from = "openai",
         endpoint = "https://opencode.ai/zen/go/v1",
         model = "mimo-v2.5",
         api_key_name = "OPENCODE_API_KEY",
-        timeout = 10000,
+        timeout = 30000,
         extra_request_body = {
-          max_tokens = 1024,
+          max_tokens = 16384,
+        },
+      },
+      ["opencode-suggest"] = {
+        __inherited_from = "openai",
+        endpoint = "https://opencode.ai/zen/go/v1",
+        model = "qwen3.5-plus",
+        api_key_name = "OPENCODE_API_KEY",
+        timeout = 30000,
+        extra_request_body = {
+          max_tokens = 4096,
         },
       },
     },
     behaviour = {
-      auto_suggestions = true,
+      auto_suggestions = false,
+    },
+    suggestion = {
+      debounce = 600,
+      throttle = 600,
     },
     input = {
       provider = "snacks",
     },
   },
+  config = function(_, opts)
+    require("avante").setup(opts)
+
+    vim.api.nvim_create_user_command("AvanteSwitchMode", function()
+      local config = require("avante.config")
+      local current = config.mode or "agentic"
+      local choices = current == "agentic" and { "agentic", "legacy" } or { "legacy", "agentic" }
+
+      vim.ui.select(choices, {
+        prompt = "Avante mode (current: " .. current .. "):",
+        format_item = function(item)
+          local marker = item == current and " (active)" or ""
+          if item == "agentic" then
+            return "agentic - uses tools to generate code" .. marker
+          else
+            return "legacy - old planning method" .. marker
+          end
+        end,
+      }, function(choice)
+        if choice and choice ~= current then
+          config.override({ mode = choice })
+          vim.notify("Avante mode switched to: " .. choice, vim.log.levels.INFO)
+        end
+      end)
+    end, {})
+  end,
   build = "make",
   dependencies = {
     "nvim-lua/plenary.nvim",

@@ -5,8 +5,21 @@ return {
   version = false,
   opts = {
     provider = "opencode",
+    auto_suggestions_provider = "opencode-go",
+    providers = {
+      ["opencode-go"] = {
+        __inherited_from = "openai",
+        endpoint = "https://opencode.ai/zen/go/v1",
+        model = "mimo-v2.5",
+        api_key_name = "OPENCODE_API_KEY",
+        timeout = 10000,
+        extra_request_body = {
+          max_tokens = 1024,
+        },
+      },
+    },
     behaviour = {
-      auto_suggestions = false,
+      auto_suggestions = true,
     },
     input = {
       provider = "snacks",

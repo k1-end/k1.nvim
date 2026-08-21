@@ -15,6 +15,9 @@ cmp.setup({
     },
     sources = cmp.config.sources(
         {
+            { name = 'avante_mentions' },
+            { name = 'avante_commands' },
+            { name = 'avante_shortcuts' },
             { name = 'nvim_lsp' },
             { name = 'luasnip' },
         },

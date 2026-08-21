@@ -5,8 +5,9 @@ return {
   version = false,
   opts = {
     provider = "opencode",
+    auto_suggestions_provider = "opencode",
     behaviour = {
-      auto_suggestions = false,
+      auto_suggestions = true,
     },
     input = {
       provider = "snacks",

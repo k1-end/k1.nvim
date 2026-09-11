@@ -1,2 +1,5 @@
-require('k1.remap')
-require('k1.settings')
+require('k1.options')
+require('k1.autocmds')
+require('k1.keymaps')
+require('k1.commands')
+require('k1.laravel')

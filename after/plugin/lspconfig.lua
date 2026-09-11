@@ -98,6 +98,13 @@ local default_setup = function(server)
     })
 end
 
+-- Set NVIM_MASON_PROXY to change this without editing the Neovim config.
+local mason_proxy = vim.env.NVIM_MASON_PROXY or 'http://192.168.75.109:2081'
+for _, name in ipairs({ 'HTTP_PROXY', 'HTTPS_PROXY', 'ALL_PROXY' }) do
+    vim.env[name] = mason_proxy
+    vim.env[name:lower()] = mason_proxy
+end
+
 require('mason').setup({})
 require('mason-lspconfig').setup({
     ensure_installed = { 
@@ -105,6 +112,7 @@ require('mason-lspconfig').setup({
         'ts_ls',
         'sqlls',
         'lua_ls',
+        'gopls',
         -- 'ltex',
         'pylsp',
         -- 'phpactor',
